@@ -22,7 +22,7 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
     
     private let trackNameLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,7 +64,7 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         self.addSubview(trackNameLabel)
         self.addSubview(artistNameLabel)
         
-        let imageSize = UIScreen.main.bounds.width/5
+        let imageSize = UIScreen.main.bounds.width/8
         
         NSLayoutConstraint.activate([
             albumCoverImageView.topAnchor.constraint(
