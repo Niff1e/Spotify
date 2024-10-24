@@ -11,6 +11,17 @@ enum BrowseSectionType {
     case newReleases(viewModels: [NewReleasesCellViewModel])
     case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel])
     case recommendedTracks(viewModels: [RecommendedTrackCellViewModel])
+    
+    var title: String {
+        switch self {
+        case .featuredPlaylists:
+            return "Featured Playlists"
+        case .newReleases:
+            return "New Released Albums"
+        case .recommendedTracks:
+            return "Recommended Tracks"
+        }
+    }
 }
 
 class HomeViewController: UIViewController {
@@ -65,11 +76,18 @@ class HomeViewController: UIViewController {
         collectionView.register(UICollectionViewCell.self,
                                 forCellWithReuseIdentifier: "cell")
         collectionView.register(NewReleaseCollectionViewCell.self,
-                                forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier)
+                                forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier
+        )
         collectionView.register(FeaturedCollectionViewCell.self,
-                                forCellWithReuseIdentifier: FeaturedCollectionViewCell.identifier)
+                                forCellWithReuseIdentifier: FeaturedCollectionViewCell.identifier
+        )
         collectionView.register(RecommendedTrackCollectionViewCell.self,
-                                forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier)
+                                forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier
+        )
+        collectionView.register(TitleHeaderCollectionReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: TitleHeaderCollectionReusableView.identifier
+        )
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -280,11 +298,35 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: TitleHeaderCollectionReusableView.identifier,
+            for: indexPath
+        ) as? TitleHeaderCollectionReusableView, kind == UICollectionView.elementKindSectionHeader else {
+            return UICollectionReusableView()
+        }
+        let section = indexPath.section
+        let title = sections[section].title
+        header.configure(with: title)
+        return header
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
     
     static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+        let supplementaryViews = [
+            NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .absolute(50)
+                ),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+        ]
         switch section {
         case 0:
             // Item
@@ -321,6 +363,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             // Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .groupPaging
+            section.boundarySupplementaryItems = supplementaryViews
             return section
             
         case 1:
@@ -359,6 +402,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             // Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .continuous
+            section.boundarySupplementaryItems = supplementaryViews
             return section
             
         case 2:
@@ -384,6 +428,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             // Section
             let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = supplementaryViews
             return section
             
         default:
@@ -411,6 +456,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             // Section
             let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = supplementaryViews
             return section
         }
     }
