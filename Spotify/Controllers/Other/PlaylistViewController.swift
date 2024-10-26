@@ -63,6 +63,7 @@ class PlaylistViewController: UIViewController {
         title = playlist.name
         view.backgroundColor = .systemBackground
         collectionView.frame = view.bounds
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(collectionView)
         collectionView.register(RecommendedTrackCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier)

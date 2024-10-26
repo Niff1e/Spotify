@@ -61,6 +61,7 @@ class AlbumViewController: UIViewController {
         super.viewDidLoad()
         title = album.name
         collectionView.frame = view.bounds
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemBackground
         
         view.addSubview(collectionView)
