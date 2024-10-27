@@ -337,7 +337,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 )
             )
             
-            item.contentInsets = .init(top: 2, leading: 2, bottom: 2, trailing: 2)
+            item.edgeSpacing = NSCollectionLayoutEdgeSpacing(
+                leading: .fixed(2.0),
+                top: .fixed(2.0),
+                trailing: .fixed(2.0),
+                bottom: .fixed(2.0)
+            )
             
             // Group
             let verticalGroup = NSCollectionLayoutGroup.vertical(

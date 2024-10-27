@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SDWebImage
 
-class GenreCollectionViewCell: UICollectionViewCell {
+class CategoryCollectionViewCell: UICollectionViewCell {
     static let identifier = "GenreCollectionViewCell"
     
     private let imageView: UIImageView = {
@@ -15,11 +16,12 @@ class GenreCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .white
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "music.quarternote.3",
-                                  withConfiguration: UIImage.SymbolConfiguration(
-                                    pointSize: 50,
-                                    weight: .regular
-                                  )
+        imageView.image = UIImage(
+            systemName: "music.quarternote.3",
+            withConfiguration: UIImage.SymbolConfiguration(
+                pointSize: 50,
+                weight: .regular
+            )
         )
         return imageView
     }()
@@ -57,11 +59,19 @@ class GenreCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        label.text = nil
+        imageView.image = UIImage(
+            systemName: "music.quarternote.3",
+            withConfiguration: UIImage.SymbolConfiguration(
+                pointSize: 50,
+                weight: .regular
+            )
+        )
     }
     
-    func configure(with title: String) {
-        label.text = title
+    func configure(with viewModel: CategoryCollectionViewCellViewModel) {
+        label.text = viewModel.title
+        imageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
         contentView.backgroundColor = colors.randomElement()
     }
     
