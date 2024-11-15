@@ -154,7 +154,7 @@ class HomeViewController: UIViewController {
                     }
                 }
             case .failure(let error):
-                break
+                print(error.localizedDescription)
             }
         }
         
@@ -226,6 +226,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    // MARK: - Collection view methods
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let section = sections[indexPath.section]
@@ -243,6 +245,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             vc.navigationItem.largeTitleDisplayMode = .never
             navigationController?.pushViewController(vc, animated: true)
         case .recommendedTracks:
+            let track = tracks[indexPath.row]
+            PlaybackPresenter.shared.startPlayback(from: self, track: track)
             break
         }
     }
@@ -315,6 +319,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
+    
+    // MARK: - Section layout
     
     static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
         let supplementaryViews = [

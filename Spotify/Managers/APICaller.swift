@@ -52,6 +52,7 @@ final class APICaller {
             with: URL(string: Constants.baseAPIURL + "/playlists/" + playlist.id),
             type: .GET
         ) { request in
+            print(URL(string: Constants.baseAPIURL + "/playlists/" + playlist.id + "?limit=10"))
             let task = URLSession.shared.dataTask(with: request) { data, _, error in
                 guard let data = data, error == nil else {
                     completion(.failure(APIError.failedToGetData))
@@ -103,6 +104,7 @@ final class APICaller {
             with: URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=50"),
             type: .GET
         ) { request in
+            print(URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=50"))
             let task = URLSession.shared.dataTask(with: request) { data, _, error in
                 guard let data = data, error == nil else {
                     completion(.failure(APIError.failedToGetData))

@@ -51,8 +51,6 @@ class AlbumTrackCollectionViewCell: UICollectionViewCell {
         self.addSubview(trackNameLabel)
         self.addSubview(artistNameLabel)
         
-        let imageSize = UIScreen.main.bounds.width/8
-        
         NSLayoutConstraint.activate([
             trackNameLabel.topAnchor.constraint(
                 equalTo: self.topAnchor, constant: 5),
