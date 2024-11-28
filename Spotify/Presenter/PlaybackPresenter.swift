@@ -42,7 +42,6 @@ final class PlaybackPresenter {
     func startPlayback(from viewController: UIViewController, track: AudioTrack) {
         self.track = track
         self.tracks = []
-        
         let vc = PlayerViewController()
         vc.title = track.name
         vc.dataSource = self

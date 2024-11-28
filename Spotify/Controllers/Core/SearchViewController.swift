@@ -102,6 +102,20 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         }
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        guard let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
+            return
+        }
+        resultsController.update(with: [])
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        guard let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
+            return
+        }
+        resultsController.update(with: [])
+    }
+    
     // MARK: - Search Results Updating
     
     func updateSearchResults(for searchController: UISearchController) {

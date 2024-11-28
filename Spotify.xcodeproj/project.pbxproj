@@ -40,6 +40,8 @@
 		232EBCDC2CA59459007A6A98 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EBCDB2CA59459007A6A98 /* FeaturedCollectionViewCell.swift */; };
 		232EBCDF2CA59494007A6A98 /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EBCDE2CA59494007A6A98 /* RecommendedTrackCollectionViewCell.swift */; };
 		232EBCE12CAB2BB9007A6A98 /* NewReleasesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232EBCE02CAB2BB9007A6A98 /* NewReleasesCellViewModel.swift */; };
+		233F90BD2CF635BA00FD625D /* Pods_Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044E6B5C6601163D629CA6BE /* Pods_Spotify.framework */; };
+		233F90BE2CF635BA00FD625D /* Pods_Spotify.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 044E6B5C6601163D629CA6BE /* Pods_Spotify.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		234724FD2C9B44CF00176775 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234724FC2C9B44CF00176775 /* SettingsModel.swift */; };
 		237732B12CBD444600AF2700 /* PlaylistHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237732B02CBD444600AF2700 /* PlaylistHeaderCollectionReusableView.swift */; };
 		237732B32CBD9B4100AF2700 /* PlaylistHeaderViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237732B22CBD9B4100AF2700 /* PlaylistHeaderViewViewModel.swift */; };
@@ -63,10 +65,26 @@
 		23E215ED2CD549CE00B6731E /* SearchResultSubtitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E215EC2CD549CE00B6731E /* SearchResultSubtitleTableViewCellViewModel.swift */; };
 		23E215F02CDA436000B6731E /* PlaybackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E215EF2CDA436000B6731E /* PlaybackPresenter.swift */; };
 		23E215F22CDE481F00B6731E /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E215F12CDE481F00B6731E /* PlayerControlsView.swift */; };
-		44CFD0F696A495DBB3239A03 /* Pods_Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B91073D506008826BB6CCDF /* Pods_Spotify.framework */; };
+		23E215F52CED339E00B6731E /* LibraryPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E215F42CED339E00B6731E /* LibraryPlaylistViewController.swift */; };
+		23E215F72CED33C800B6731E /* LibraryAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E215F62CED33C800B6731E /* LibraryAlbumsViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		233F90BF2CF635BA00FD625D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				233F90BE2CF635BA00FD625D /* Pods_Spotify.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		044E6B5C6601163D629CA6BE /* Pods_Spotify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		230885852C7A53F000EECF2A /* Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		230885882C7A53F000EECF2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2308858A2C7A53F000EECF2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,9 +143,10 @@
 		23E215EC2CD549CE00B6731E /* SearchResultSubtitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		23E215EF2CDA436000B6731E /* PlaybackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackPresenter.swift; sourceTree = "<group>"; };
 		23E215F12CDE481F00B6731E /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
-		3194F006465437833D6E8BD9 /* Pods-Spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.debug.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.debug.xcconfig"; sourceTree = "<group>"; };
-		6B91073D506008826BB6CCDF /* Pods_Spotify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E71F332F3477506D21199698 /* Pods-Spotify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.release.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.release.xcconfig"; sourceTree = "<group>"; };
+		23E215F42CED339E00B6731E /* LibraryPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistViewController.swift; sourceTree = "<group>"; };
+		23E215F62CED33C800B6731E /* LibraryAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAlbumsViewController.swift; sourceTree = "<group>"; };
+		9E15E17232D06D51E06C4063 /* Pods-Spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.debug.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.debug.xcconfig"; sourceTree = "<group>"; };
+		CFBA56175D43C647FE822D12 /* Pods-Spotify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.release.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,20 +154,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44CFD0F696A495DBB3239A03 /* Pods_Spotify.framework in Frameworks */,
+				233F90BD2CF635BA00FD625D /* Pods_Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03DF7453B001D2C91D34ADA8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E15E17232D06D51E06C4063 /* Pods-Spotify.debug.xcconfig */,
+				CFBA56175D43C647FE822D12 /* Pods-Spotify.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2308857C2C7A53F000EECF2A = {
 			isa = PBXGroup;
 			children = (
 				230885872C7A53F000EECF2A /* Spotify */,
 				230885862C7A53F000EECF2A /* Products */,
-				583B51006F4E12C18DB41D32 /* Pods */,
 				4C27CEBF42115C12BF1D8234 /* Frameworks */,
+				03DF7453B001D2C91D34ADA8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,6 +301,7 @@
 		230885A92C87804700EECF2A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				23E215F32CED337000B6731E /* Library */,
 				237732C42CCEDC6600AF2700 /* CategoryViewController.swift */,
 				230885AA2C87805F00EECF2A /* AuthViewController.swift */,
 				230885AC2C87807300EECF2A /* WelcomeViewController.swift */,
@@ -312,21 +342,21 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		23E215F32CED337000B6731E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				23E215F42CED339E00B6731E /* LibraryPlaylistViewController.swift */,
+				23E215F62CED33C800B6731E /* LibraryAlbumsViewController.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		4C27CEBF42115C12BF1D8234 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B91073D506008826BB6CCDF /* Pods_Spotify.framework */,
+				044E6B5C6601163D629CA6BE /* Pods_Spotify.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		583B51006F4E12C18DB41D32 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3194F006465437833D6E8BD9 /* Pods-Spotify.debug.xcconfig */,
-				E71F332F3477506D21199698 /* Pods-Spotify.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +371,7 @@
 				230885822C7A53F000EECF2A /* Frameworks */,
 				230885832C7A53F000EECF2A /* Resources */,
 				7A9F5C7315DAAADBA9C748ED /* [CP] Embed Pods Frameworks */,
+				233F90BF2CF635BA00FD625D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -447,6 +478,7 @@
 				230885BF2C87814B00EECF2A /* Playlist.swift in Sources */,
 				232EBCDC2CA59459007A6A98 /* FeaturedCollectionViewCell.swift in Sources */,
 				237732C82CD2D13C00AF2700 /* SearchResultResponse.swift in Sources */,
+				23E215F52CED339E00B6731E /* LibraryPlaylistViewController.swift in Sources */,
 				232EBCE12CAB2BB9007A6A98 /* NewReleasesCellViewModel.swift in Sources */,
 				23A5D9452CAEE7890039D8A5 /* RecommendedTrackCellViewModel.swift in Sources */,
 				237732BB2CCA7CC100AF2700 /* AlbumCollectionViewCellViewModel.swift in Sources */,
@@ -470,6 +502,7 @@
 				237732BF2CCBA55600AF2700 /* CategoryCollectionViewCell.swift in Sources */,
 				230885C92C945F2600EECF2A /* AuthResponse.swift in Sources */,
 				23E215EB2CD5482600B6731E /* SearchResultSubtitleTableViewCell.swift in Sources */,
+				23E215F72CED33C800B6731E /* LibraryAlbumsViewController.swift in Sources */,
 				232EBCCF2CA01A8A007A6A98 /* NewReleasesResponse.swift in Sources */,
 				237732B92CCA70D100AF2700 /* AlbumTrackCollectionViewCell.swift in Sources */,
 				232EBCD12CA02AB5007A6A98 /* APIImage.swift in Sources */,
@@ -635,7 +668,7 @@
 		};
 		2308859A2C7A53F200EECF2A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3194F006465437833D6E8BD9 /* Pods-Spotify.debug.xcconfig */;
+			baseConfigurationReference = 9E15E17232D06D51E06C4063 /* Pods-Spotify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -647,6 +680,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -662,7 +696,7 @@
 		};
 		2308859B2C7A53F200EECF2A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E71F332F3477506D21199698 /* Pods-Spotify.release.xcconfig */;
+			baseConfigurationReference = CFBA56175D43C647FE822D12 /* Pods-Spotify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -674,6 +708,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

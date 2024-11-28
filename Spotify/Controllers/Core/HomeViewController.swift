@@ -33,13 +33,17 @@ class HomeViewController: UIViewController {
     private var tracks: [AudioTrack] = []
     private var playlists: [Playlist] = []
     
-    private var collectionView: UICollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _  in
+    private var collectionView: UICollectionView = {
+        let collectionViewCompositionalLayout = UICollectionViewCompositionalLayout { sectionIndex, _  in
             let layout = HomeViewController.createSectionLayout(section: sectionIndex)
             return layout
         }
-    )
+        collectionViewCompositionalLayout.configuration.interSectionSpacing = 100
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewCompositionalLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .systemBackground
+        return collectionView
+    }()
     
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
@@ -66,13 +70,9 @@ class HomeViewController: UIViewController {
         fetchData()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
-    }
-    
     private func configureCollectionView() {
         view.addSubview(collectionView)
+        collectionView.frame = view.bounds
         collectionView.register(UICollectionViewCell.self,
                                 forCellWithReuseIdentifier: "cell")
         collectionView.register(NewReleaseCollectionViewCell.self,
@@ -90,8 +90,6 @@ class HomeViewController: UIViewController {
         )
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .systemBackground
     }
     
     private func fetchData() {
@@ -247,7 +245,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .recommendedTracks:
             let track = tracks[indexPath.row]
             PlaybackPresenter.shared.startPlayback(from: self, track: track)
-            break
         }
     }
     
@@ -360,16 +357,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 count: numberOfNewReleasesSectionItem
             )
             
-            verticalGroup.interItemSpacing = NSCollectionLayoutSpacing.flexible(2)
+            verticalGroup.interItemSpacing = .fixed(2)
             
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(0.9),
-                    heightDimension: .absolute(CGFloat(130 * numberOfNewReleasesSectionItem))
+                    heightDimension: .absolute(CGFloat(137 * numberOfNewReleasesSectionItem))
                 ),
                 repeatingSubitem: verticalGroup,
                 count: 1
             )
+            
+            horizontalGroup.interItemSpacing = .fixed(10)
             
             // Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
@@ -399,7 +398,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 count: numberOfFeaturedPlaylistsSectionItem
             )
             
-            verticalGroup.interItemSpacing = .flexible(2)
+            verticalGroup.interItemSpacing = .flexible(5)
             
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(
                 layoutSize: NSCollectionLayoutSize(
@@ -409,6 +408,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 repeatingSubitem: verticalGroup,
                 count: 1
             )
+            
+            horizontalGroup.interItemSpacing = .fixed(5)
             
             // Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
