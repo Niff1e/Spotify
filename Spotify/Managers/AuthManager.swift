@@ -13,9 +13,9 @@ final class AuthManager {
     private var refreshingToken = false
     
     struct Constants {
-        static let clientID = "90c8028aead244eda5bda9af3df2bf11"
-        static let clientSecret = "985628b203bc447fbc09d47a4ccdd65c"
-        static let redirectURI = "https://www.iosacademy.io"
+        static let clientID = "a3376db9ebc04a20b9d5b05e41b2b7fb"
+        static let clientSecret = "797d019ec5cd4b91b7388e362ab2a8bb"
+        static let redirectURI = "https://www.google.com/"
         static let tokenAPIURL = "https://accounts.spotify.com/api/token"
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
     }
@@ -109,7 +109,8 @@ final class AuthManager {
     
     private var onRefreshBlocks = [((String) -> Void)]()
     
-    /// Supplies valid token to be used API Calls
+    // Supplies valid token to be used API Calls
+    
     public func withValidToken(completion: @escaping (String) -> Void) {
         guard !refreshingToken else {
             // Append the completion

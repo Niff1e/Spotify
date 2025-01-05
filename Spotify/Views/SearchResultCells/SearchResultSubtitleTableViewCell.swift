@@ -39,7 +39,7 @@ class SearchResultSubtitleTableViewCell: UITableViewCell {
     func configure(with viewModel: SearchResultSubtitleTableViewCellViewModel) {
         label.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
-        iconImage.sd_setImage(with: viewModel.imageURL, completed: nil)
+        iconImage.sd_setImage(with: viewModel.imageURL, placeholderImage: UIImage(systemName: "photo"), completed: nil)
     }
     
     // MARK: - Init
@@ -79,12 +79,12 @@ class SearchResultSubtitleTableViewCell: UITableViewCell {
             iconImage.widthAnchor.constraint(equalToConstant: imageSize),
             iconImage.heightAnchor.constraint(equalToConstant: imageSize),
             
-            label.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor, constant: 10.0),
+            label.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor, constant: 15.0),
             label.topAnchor.constraint(equalTo: self.topAnchor),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15.0),
             label.heightAnchor.constraint(equalToConstant: labelHeight),
             
-            subtitleLabel.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor, constant: 10.0),
+            subtitleLabel.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor, constant: 15.0),
             subtitleLabel.topAnchor.constraint(equalTo: label.bottomAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15.0),
             subtitleLabel.heightAnchor.constraint(equalToConstant: labelHeight)
