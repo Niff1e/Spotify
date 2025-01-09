@@ -13,6 +13,8 @@ class PlaylistViewController: UIViewController {
     private var viewModels: [RecommendedTrackCellViewModel] = []
     private var tracks: [AudioTrack] = []
     
+    public var isOwner = false
+    
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ in
@@ -100,6 +102,9 @@ class PlaylistViewController: UIViewController {
                                                             target: self,
                                                             action: #selector(didTapShare)
         )
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_ :)))
+        collectionView.addGestureRecognizer(gesture)
     }
     
     // MARK: - Objc Button Methods
@@ -113,6 +118,35 @@ class PlaylistViewController: UIViewController {
         )
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
+    }
+    
+    @objc private func didLongPress(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else {
+            return
+        }
+        let touchPoint = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: touchPoint) else {
+            return
+        }
+        let trackToDelete = tracks[indexPath.row]
+        
+        let actionSheet = UIAlertController(title: "Remove", message: "Would you like to remove \(trackToDelete.name) from \(playlist.name)?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Remove", style: .destructive) { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+            APICaller.shared.removeTrackFromPlaylist(track: trackToDelete, playlist: strongSelf.playlist) { success in
+                if success {
+                    DispatchQueue.main.async {
+                        strongSelf.tracks.remove(at: indexPath.row)
+                        strongSelf.viewModels.remove(at: indexPath.row)
+                        strongSelf.collectionView.reloadData()
+                    }
+                }
+            }}
+        )
+        present(actionSheet, animated: true, completion: nil)
     }
 }
 
