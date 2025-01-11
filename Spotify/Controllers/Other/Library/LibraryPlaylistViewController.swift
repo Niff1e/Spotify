@@ -111,8 +111,10 @@ class LibraryPlaylistViewController: UIViewController {
             
             APICaller.shared.createPlaylist(with: text) { [weak self] success in
                 if success {
+                    HapticksManager.shared.vibrate(for: .success)
                     self?.fetchData()
                 } else {
+                    HapticksManager.shared.vibrate(for: .error)
                     print("Failed to create playlist")
                 }
             }
@@ -158,6 +160,7 @@ extension LibraryPlaylistViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        HapticksManager.shared.vibrateForSelection()
         let libraryPlaylist = playlists[indexPath.row]
         let playlist = Playlist(description: "", external_urls: libraryPlaylist.external_urls, id: libraryPlaylist.id, images: libraryPlaylist.images ?? [], name: libraryPlaylist.name, owner: libraryPlaylist.owner)
         
